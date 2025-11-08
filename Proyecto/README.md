@@ -41,6 +41,33 @@ Importar y limpiar los datos
 
 Comienzo importando las librerías necesarias y cargando el conjunto de datos, seguido de tareas iniciales de limpieza de datos para asegurar la calidad de la información.
 
+```python
+
+import pandas as pd
+import matplotlib.pyplot as plt
+import copy
+import tabulate
+import openpyxl
+import ast
+import seaborn as sns
+
+df = pd.read_csv(r"C:\Users\gabri\Documents\PYTHON\Archivos youtube\data_jobs.csv")
+df['job_posted_date'] = pd.to_datetime(df['job_posted_date'])
+df['job_skills'] = df['job_skills'].apply(lambda x : ast.literal_eval(x) if pd.notna(x) else x)
+
+```
+
+
+# Filtrar trabajos en EE.UU.
+
+Para enfocar mi análisis en el mercado laboral estadounidense, aplico filtros al conjunto de datos, reduciendo a los roles ubicados en Estados Unidos.
+
+```python
+
+df_USA = df.query('job_country == "United States"')
+
+```
+
 
 # Analisis 
 
@@ -54,9 +81,47 @@ Esta consulta resalta los títulos de trabajo más populares y sus principales h
 Puedes ver mi cuaderno con los pasos detallados aquí:
 [Proyecto.ipynb](Proyecto.ipynb)
 
+
 ## Visualizar los datos
 
 
+```python
+fig , ax = plt.subplots(len(job_titles), 1)
+plt.figure(figsize=(10,10))
+sns.set_theme(style='ticks')
+
+for i, job in enumerate(job_titles):
+    df_plot1 = job_perc[job_perc['job_title_short'] == job].head(5).round(2)
+    # df_plot.plot(kind='barh',x='job_skills', y='job_skill_oerce', ax=ax[i], title=job)
+    sns.barplot(df_plot1,x='job_skill_perce', y='job_skills', hue='skill_count', ax=ax[i], palette='dark:b_r')
+    fig.tight_layout()
+    ax[i].set_title(job)
+    # ax[i].tick_params(axis='y',rotation=5)
+    ax[i].set_ylabel('')
+    ax[i].set_xlabel('')
+    # ax[i].xt
+    ax[i].legend().set_visible(False)
+    ax[i].set_xlim(0,80)
+
+    for n, v in enumerate(df_plot1['job_skill_perce']):
+        ax[i].text(v+1,n,f'{v:.0f}%', va='center')
+    if i != len(job_titles) - 1 :
+        ax[i].set_xticks([])
+fig.suptitle('Porcentaje de solicitud de lenguajes y herramientas clave según el rol de datos.',fontsize=15)  
+fig.tight_layout(h_pad=0.5)
+plt.show()  
+```
 
 
+## Resultado
+ 
+![Visual de herramientas](Imagen\output.png)
+
+
+
+## Hallazgos Clave
+
+- Python es una habilidad versátil, muy demandada en los tres roles, pero más prominentemente para Científicos de Datos (72%) e Ingenieros de Datos (65%).
+- SQL es la habilidad más solicitada para Analistas de Datos y Científicos de Datos, apareciendo en más de la mitad de las publicaciones de trabajo para ambos roles. Para Ingenieros de Datos, Python es la habilidad más buscada, apareciendo en el 68% de las publicaciones de trabajo.
+- Los Ingenieros de Datos requieren habilidades técnicas más especializadas (AWS, Azure, Spark) en comparación con Analistas de Datos y Científicos de Datos, de quienes se espera dominio en herramientas más generales de gestión y análisis de datos (Excel, Tableau).
 
