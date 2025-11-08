@@ -115,7 +115,7 @@ plt.show()
 
 ## Resultado
  
-![Visual de herramientas](Imagen\output.png)
+![Visual de herramientas](Imagen/output.png)
 
 
 
