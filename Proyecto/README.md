@@ -52,9 +52,12 @@ Para encontrar las habilidades más demandadas en los 3 roles de datos más popu
 Esta consulta resalta los títulos de trabajo más populares y sus principales habilidades, mostrando en cuáles debería enfocarme según el rol al que estoy apuntando.
 
 Puedes ver mi cuaderno con los pasos detallados aquí:
-[Proyecto.ipynb](PROYECTO\Proyecto\Proyecto.ipynb)
+[Proyecto.ipynb](PROYECTO/Proyecto/PROYECTO.ipynb)
 
 ## Visualizar los datos
 
 
 
+
+
+[def]: PROYECTO/Proyecto/Proyecto.ipynb
