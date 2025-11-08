@@ -51,8 +51,7 @@ Cada cuaderno de Jupyter en este proyecto está orientado a investigar aspectos 
 Para encontrar las habilidades más demandadas en los 3 roles de datos más populares, filtré las posiciones según cuáles eran las más comunes y obtuve las 5 habilidades principales para esos 3 roles.
 Esta consulta resalta los títulos de trabajo más populares y sus principales habilidades, mostrando en cuáles debería enfocarme según el rol al que estoy apuntando.
 
-Puedes ver mi cuaderno con los pasos detallados aquí:
-[Proyecto.ipynb](PROYECTO/Proyecto/PROYECTO.ipynb)
+Puedes ver mi cuaderno con los pasos detallados aquí:[Proyecto.ipynb](PROYECTO\Proyecto\Proyecto.ipynb)
 
 ## Visualizar los datos
 
